@@ -3,8 +3,8 @@ class Magic:
     Clase con métodos para juegos matemáticos, secuencias especiales y algoritmos numéricos.
     Incluye implementaciones de Fibonacci, números perfectos, triangulo de pascal etc.
     """
-    
     def fibonacci(self, n):
+        
         if n < 0:
             return None
         if n == 0:
