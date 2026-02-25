@@ -53,14 +53,17 @@ class Matrix:
     def transpuesta(self, matriz):
         if matriz == []:
             return []
+
         filas = len(matriz)
         columnas = len(matriz[0])
+
         resultado = []
         for j in range(columnas):
-            fila = []
+            nueva_fila = []
         for i in range(filas):
-            fila.append(matriz[i][j])
-        resultado.append(fila)
+            nueva_fila.append(matriz[i][j])
+        resultado.append(nueva_fila)
+
         return resultado
 
     def es_cuadrada(self, matriz):
@@ -91,7 +94,7 @@ class Matrix:
             raise ValueError("La matriz no es 2x2")
         return matriz[0][0] * matriz[1][1] - matriz[0][1] * matriz[1][0]
 
-    def determinante_3x3(self, matriz):
+    def determinante_3x3(self, matriz):  
         if len(matriz) != 3 or len(matriz[0]) != 3:
             raise ValueError("La matriz no es 3x3")
 
