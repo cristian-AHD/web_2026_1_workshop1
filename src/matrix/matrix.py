@@ -51,17 +51,21 @@ class Matrix:
         return resultado
 
     def transpuesta(self, matriz):
+        if matriz == []:
+            return []
         filas = len(matriz)
         columnas = len(matriz[0])
         resultado = []
         for j in range(columnas):
             fila = []
-            for i in range(filas):
-                fila.append(matriz[i][j])
-            resultado.append(fila)
+        for i in range(filas):
+            fila.append(matriz[i][j])
+        resultado.append(fila)
         return resultado
 
     def es_cuadrada(self, matriz):
+        if matriz == []:
+            return False
         return len(matriz) == len(matriz[0])
 
     def es_simetrica(self, matriz):
@@ -90,13 +94,16 @@ class Matrix:
     def determinante_3x3(self, matriz):
         if len(matriz) != 3 or len(matriz[0]) != 3:
             raise ValueError("La matriz no es 3x3")
-        a = matriz
-        return (a[0][0] * a[1][1] * a[2][2] +
-                a[0][1] * a[1][2] * a[2][0] +
-                a[0][2] * a[1][0] * a[2][1] -
-                a[0][2] * a[1][1] * a[2][0] -
-                a[0][1] * a[1][0] * a[2][2] -
-                a[0][0] * a[1][2] * a[2][1])
+
+        a, b, c = matriz[0]
+        d, e, f = matriz[1]
+        g, h, i = matriz[2]
+
+        return (
+            a * (e * i - f * h)
+            - b * (d * i - f * g)
+            + c * (d * h - e * g)
+        )
 
     def identidad(self, n):
         resultado = []
