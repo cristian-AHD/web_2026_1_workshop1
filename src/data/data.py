@@ -22,9 +22,9 @@ class Data:
 
         for elemento in lista:
             clave = (elemento, type(elemento))
-        if clave not in vistos:
-            vistos.add(clave)
-            resultado.append(elemento)
+            if clave not in vistos:
+                vistos.add(clave)
+                resultado.append(elemento)
 
         return resultado
     
