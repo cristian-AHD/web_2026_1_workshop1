@@ -18,9 +18,14 @@ class Data:
     
     def eliminar_duplicados(self, lista):
         resultado = []
+        vistos = set()
+
         for elemento in lista:
-            if elemento not in resultado:
-                resultado.append(elemento)
+            clave = (elemento, type(elemento))
+        if clave not in vistos:
+            vistos.add(clave)
+            resultado.append(elemento)
+
         return resultado
     
     def merge_ordenado(self, lista1, lista2):
@@ -111,12 +116,17 @@ class Data:
         }
     
     def matriz_transpuesta(self, matriz):
+        if not matriz:
+            return []
+
         filas = len(matriz)
         columnas = len(matriz[0])
         transpuesta = []
+        
         for j in range(columnas):
             fila = []
             for i in range(filas):
                 fila.append(matriz[i][j])
             transpuesta.append(fila)
+
         return transpuesta
