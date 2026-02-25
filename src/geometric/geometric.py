@@ -5,13 +5,17 @@ class Geometria:
     """
     
     def area_rectangulo(self, base, altura):
-        return base*altura
+        if base < 0 or altura < 0:
+            return 0
+        return base * altura
     
     def perimetro_rectangulo(self, base, altura):
         return 2 * (base + altura)
     
     def area_circulo(self, radio):
         import math
+        if radio < 0:
+            return 0
         return math.pi * radio ** 2
     
     def perimetro_circulo(self, radio):
@@ -48,6 +52,8 @@ class Geometria:
         return 6 * lado
     
     def volumen_cubo(self, lado):
+        if lado < 0:
+            return 0
         return lado ** 3
     
     def area_superficie_cubo(self, lado):
@@ -80,13 +86,19 @@ class Geometria:
         return (y2 - y1) / (x2 - x1)
     
     def ecuacion_recta(self, x1, y1, x2, y2):
+        if y1 == y2:
+            return (0, 1, -y1)
+
+        if x1 == x2:
+            return (1, 0, -x1)
+
         A = y2 - y1
         B = x1 - x2
         C = (x2 - x1) * y1 - (y2 - y1) * x1
         return (A, B, C)
     
     def area_poligono_regular(self, num_lados, lado, apotema):
-        return (num_lados * lado * apotema) / 2
+        return num_lados * lado * apotema
     
     def perimetro_poligono_regular(self, num_lados, lado):
         return num_lados * lado
