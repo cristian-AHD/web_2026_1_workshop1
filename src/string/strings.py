@@ -5,9 +5,8 @@ class Strings:
     """
     
     def es_palindromo(self, texto):
-        texto = texto.lower()
-        invertido = self.invertir_cadena(texto)
-        return texto == invertido
+        texto = texto.lower().replace(" ", "")
+        return texto == self.invertir_cadena(texto)
     
     def invertir_cadena(self, texto):
         resultado = ""
@@ -24,10 +23,10 @@ class Strings:
         return contador
     
     def contar_consonantes(self, texto):
-        consonantes = "bcdfghjklmnñpqrstvwxyz"
+        vocales = "aeiouAEIOU"
         contador = 0
         for letra in texto:
-            if letra.isalpha() and letra not in consonantes:
+            if letra.isalpha() and letra not in vocales:
                 contador += 1
         return contador
     
@@ -75,15 +74,17 @@ class Strings:
     def eliminar_espacios_duplicados(self, texto):
         resultado = ""
         espacio_anterior = False
+
         for caracter in texto:
             if caracter == " ":
                 if not espacio_anterior:
                     resultado += caracter
-                espacio_anterior = True
-            else:
-                resultado += caracter
-                espacio_anterior = False
-        return resultado.strip()
+            espacio_anterior = True
+        else:
+            resultado += caracter
+            espacio_anterior = False
+
+        return resultado
     
     def es_numero_entero(self, texto):
         if texto == "" or texto == "-":
@@ -108,6 +109,9 @@ class Strings:
         return self.cifrar_cesar(texto, -desplazamiento)
     
     def encontrar_subcadena(self, texto, subcadena):
+        if subcadena == "":
+            return []
+
         posiciones = []
         largo = len(subcadena)
         for i in range(len(texto) - largo + 1):
